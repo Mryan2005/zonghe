@@ -1,11 +1,15 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
+#define maxSchool 21
+#define maxProject 51
 
 typedef struct stdu {
     char name[256];
     int score;
     int schoolId;
+	int position;
+	int projectid;
 } stdu;
 
 typedef struct project {
@@ -16,20 +20,20 @@ typedef struct project {
 } project;
 
 typedef struct projects {
-    project data[50];
+    project data[maxProject];
     int length;
 } projects;
 
 typedef struct school {
     int schoolId;
     char schoolName[256];
-    stdu *data[50];
+    stdu *data[2000];
     int length;
     int boysScoreSum;
     int girlsScoreSum;
 } school;
 
 typedef struct schools {
-    school data[20];
+    school data[maxSchool];
     int length;
 } schools;
