@@ -108,6 +108,15 @@ int main() {
 			scanf("%d", &schoolId);
 			showSchoolResult(schs, schoolId);
 			break;
+		case 10:
+			if(schs.length == 0) {
+				printf("\t\t好像没有学校参加比赛，快去让更多的学校参赛吧。\n");
+				break;
+			} else if(pros.length == 0) {
+				printf("\t\t好像没有比赛项目，快去开始比赛吧。\n");
+				break;
+			}
+			count(schs);
 		case 0:
 			exit(0);
 			break;

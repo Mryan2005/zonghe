@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #define maxSchool 21
 #define maxProject 51
+#define boyProjectP 1
+#define girlProjectP 31
 
 typedef struct stdu {
     char name[256];
