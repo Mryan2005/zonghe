@@ -40,8 +40,9 @@ void sort(stdu **data, int length) {
 void addProject(projects *pros, schools *schs) {
 	int length, proId, getPreN, proType;
 	char isY, projectName[256];
-	printf("\t\t参赛人数: ");
+	printf("\t\t参赛人数（0表示退出）: ");
 	scanf("%d", &length);
+	if(length == 0) return;
 	printf("\t\t项目的编号 (男生：1~30，女生31~50): ");
 	scanf("%d", &proId);
 	if(pros->data[proId].projectId != 0) {
@@ -51,8 +52,18 @@ void addProject(projects *pros, schools *schs) {
 			scanf("%d", &proId);
 			if(pros->data[proId].projectId == 0) break;
 		}
-	} else if(proType == 0 && proId >= girlProjectP) {
-		printf("\t\t项目类型出错，这是否是女生项目 (y or n)：\n\t\t");
+	}
+	printf("\t\t项目要取的前n名（n为0时，将由系统自动安排）: ");
+	scanf("%d", &getPreN);
+	if(getPreN == 0) {
+		if(length % 2 == 0) getPreN = 3;
+		else getPreN = 5;
+	}
+	printf("\t\t项目的类型（0 or 1）[ 0: 男生, 1: 女生 ]: ");
+	scanf("%d", &proType);
+	if(proType == 0 && proId >= girlProjectP) {
+		fflush(stdin);
+		printf("\t\t项目类型出错，这是否是女生项目 (y or n)：");
 		scanf("%c", &isY);
 		if(isY == 'y') {
 			proType = 1;
@@ -64,7 +75,8 @@ void addProject(projects *pros, schools *schs) {
 			}
 		}
 	} else if(proType == 1 && proId < girlProjectP) {
-		printf("\t\t项目类型出错，这是否是男生项目 (y or n)：\n\t\t");
+		fflush(stdin);
+		printf("\t\t项目类型出错，这是否是男生项目 (y or n)：");
 		scanf("%c", &isY);
 		if(isY == 'y') {
 			proType = 0;
@@ -76,14 +88,6 @@ void addProject(projects *pros, schools *schs) {
 			}
 		}
 	}
-	printf("\t\t项目要取的前n名（n为0时，将由系统自动安排）: ");
-	scanf("%d", &getPreN);
-	if(getPreN == 0) {
-		if(length % 2 == 0) getPreN = 3;
-		else getPreN = 5;
-	}
-	printf("\t\t项目的类型（0 or 1）[ 0: 男生, 1: 女生 ]: ");
-	scanf("%d", &proType);
 	printf("\t\t比赛项目名称: ");
 	fflush(stdin);
 	gets(projectName);
@@ -116,7 +120,7 @@ void showProjectsList(projects pros) {
 	printf("\t\tid\t比赛名称\t取前n名\n");
 	for(int i = 1; i < maxProject; i++) {
 		if(pros.data[i].projectId != 0) {
-			printf("\t\t%d\t%s\t%d\n", pros.data[i].projectId, pros.data[i].projectName, pros.data[i].getPreN);
+			printf("\t\t%d\t%s\t\t%d\n", pros.data[i].projectId, pros.data[i].projectName, pros.data[i].getPreN);
 		}
 	}
 }
@@ -168,7 +172,7 @@ void addSchool(schools *schs, int schoolId, char *schoolName) {
 
 void removeSchool(schools *schs, int schoolId) {
 	char isY;
-	if(schoolId < maxSchool) {
+	if(schoolId > maxSchool) {
 		printf("\t\t超过范围！\n");
 		return;
 	} else if(schoolId == 0) {
@@ -193,23 +197,28 @@ void removeSchool(schools *schs, int schoolId) {
 void showSchools(schools schs) {
 	printf("\n");
 	printf("\t\t\t当前参赛学校\n\t\t===================================\n");
+	printf("\t\t学校编号\t 学校名\n");
 	for(int i = 1; i < maxSchool; i++) {
-		if(schs.data[i].schoolId != 0) printf("\t\t %d %s \n", schs.data[i].schoolId, schs.data[i].schoolName);
+		if(schs.data[i].schoolId != 0) printf("\t\t%d\t\t%s\n", schs.data[i].schoolId, schs.data[i].schoolName);
 	}
 	printf("\n");
 }
 
 void showSchoolResult(schools schs, projects pros, int schoolId) {
+	if(schs.data[schoolId].length == 0) {
+		printf("\t\t%s尚未参加比赛，是时候给%s安排赛事了。\n", schs.data[schoolId].schoolName, schs.data[schoolId].schoolName);
+		return;
+	}
 	printf("\t\t\t比赛结果\n\t\t===================================\n");
 	printf("\t\t姓名\t项目id\t项目名称\t排名\t成绩\n");
 	for(stdu **p = schs.data[schoolId].data; p < schs.data[schoolId].data + schs.data[schoolId].length; p++) {
-		printf("\t\t%s\t%d\t%s\t%d\t%d\n", (*p)->name, (*p)->projectid, pros.data[(*p)->projectid].projectName, (*p)->position, (*p)->score);
+		printf("\t\t%s\t%d\t%s\t\t%d\t%d\n", (*p)->name, (*p)->projectid, pros.data[(*p)->projectid].projectName, (*p)->position, (*p)->score);
 	}
 }
 
 void count(schools schs) {
-	printf("\t\t\t团体统计\n\t\t===================================\n");
-	printf("\t\t学校名\t男子团体\t女子团体\t团体总分\n");
+	printf("\t\t\t\t团体统计\n\t\t=========================================\n");
+	printf("\t\t学校编号\t学校名\t男子团体\t女子团体\t团体总分\n");
 	for(int i = 1; i < maxSchool; i++) {
 		if(schs.data[i].schoolId == 0) continue;
 		schs.data[i].boysScoreSum = schs.data[i].girlsScoreSum = 0;
@@ -220,6 +229,6 @@ void count(schools schs) {
 				schs.data[i].boysScoreSum += (*p)->score;
 			}
 		}
-		printf("\t\t%s\t%d\t\t%d\t\t%d\n", schs.data[i].schoolName, schs.data[i].boysScoreSum, schs.data[i].girlsScoreSum, schs.data[i].girlsScoreSum+schs.data[i].boysScoreSum);
+		printf("\t\t%d\t\t%s\t%d\t\t%d\t\t%d\n", i, schs.data[i].schoolName, schs.data[i].boysScoreSum, schs.data[i].girlsScoreSum, schs.data[i].girlsScoreSum+schs.data[i].boysScoreSum);
 	}
 }

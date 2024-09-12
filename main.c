@@ -34,7 +34,14 @@ int main() {
 					printf("\t\t");
 					scanf("%d", &schoolId);
 					if (schoolId == 0) break;
+					while(schoolId > maxSchool) {
+						printf("\t\t学校编码越界，请重新输入。\n\t\t");
+						scanf("%d", &schoolId);
+					}
 					gets(schoolName);
+					while(strcmp(schoolName, " ") == 0 || strcmp(schoolName, "") == 0) {
+						gets(schoolName);
+					}
 					addSchool(&schs, schoolId, schoolName);
 				}
 				break;
@@ -58,6 +65,7 @@ int main() {
 			case 4:
 				if (schs.length == 0) {
 					printf("\t\t好像没有学校参加比赛，快去让更多的学校参赛吧。\n");
+					break;
 				}
 				addProject(&pros, &schs);
 				break;
@@ -69,7 +77,9 @@ int main() {
 					printf("\t\t好像没有比赛项目，快去开始比赛吧。\n");
 					break;
 				}
+				printf("请输入比赛项目的id（0表示退出）");
 				scanf("%d", &proId);
+				if(proId == 0) break;
 				removeProject(&pros, proId);
 				break;
 			case 6:
@@ -87,6 +97,13 @@ int main() {
 				showProjectsList(pros);
 				printf("\t\t请选择：");
 				scanf("%d", &proId);
+				if(proId < 0 || proId > maxProject) {
+					printf("\t\t发生越界了！\n");
+					break;
+				} else if(pros.data[proId].projectId == 0) {
+					printf("\t\t该比赛项目不存在！\n");
+					break;
+				}
 				showProjectResult(pros.data[proId], schs);
 				break;
 			case 8:
@@ -97,6 +114,13 @@ int main() {
 				showProjectsList(pros);
 				printf("\t\t请选择：");
 				scanf("%d", &proId);
+				if(proId < 0 || proId > maxProject) {
+					printf("\t\t发生越界了！\n");
+					break;
+				} else if(pros.data[proId].projectId == 0) {
+					printf("\t\t该比赛项目不存在！\n");
+					break;
+				}
 				showProjectResult1(pros.data[proId], schs);
 				break;
 			case 9:
@@ -110,6 +134,13 @@ int main() {
 				showSchools(schs);
 				printf("\t\t请选择：");
 				scanf("%d", &schoolId);
+				if(proId < 0 || schoolId > maxSchool) {
+					printf("\t\t发生越界了！\n");
+					break;
+				} else if(schs.data[schoolId].schoolId == 0) {
+					printf("\t\t该学校不存在！\n");
+					break;
+				}
 				showSchoolResult(schs, pros, schoolId);
 				break;
 			case 10:
@@ -126,8 +157,12 @@ int main() {
 				exit(0);
 				break;
 			default:
-				//TODO
+				printf("\t\t这个选择以后再来探索吧！\n");
 				break;
 		}
+		fflush(stdin);
+		printf("\t\t");
+		system("pause");
+		system("cls");
 	}
 }
