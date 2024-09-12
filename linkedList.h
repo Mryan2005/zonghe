@@ -1,10 +1,10 @@
-#pramga once
+#pragma once
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 typedef struct LNode{
-    char name;
+    char name[256];
     int projectId;
     int score;
     struct LNode *next;
