@@ -15,7 +15,8 @@ typedef struct stdu {
 } stdu;
 
 typedef struct project {
-    char projectId;
+    int projectId;
+	char projectName[256];
     int getPreN;
     stdu *data[30];
     int length;
