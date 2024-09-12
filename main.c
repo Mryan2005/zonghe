@@ -10,26 +10,26 @@ int main() {
 	schools schs = initSchoolsSqList();
 	projects pros = initProjectsSqList();
 	while (1) {
-		printf("\n\n\t\t============== è¿åŠ¨ä¼šåˆ†æ•°ç»Ÿè®¡ ==============\n");
-		printf("\t\t1. æ·»åŠ å­¦æ ¡\n");
-		printf("\t\t2. åˆ é™¤å­¦æ ¡\n");
-		printf("\t\t3. æŸ¥çœ‹å‚èµ›å­¦æ ¡\n");
-		printf("\t\t4. æ·»åŠ æ¯”èµ›é¡¹ç›®\n");
-		printf("\t\t5. åˆ é™¤æ¯”èµ›é¡¹ç›®\n");
-		printf("\t\t6. æŸ¥çœ‹æ¯”èµ›é¡¹ç›®\n");
-		printf("\t\t7. æŸ¥çœ‹æ¯”èµ›é¡¹ç›®çš„ç»“æœï¼ˆæ‰€æœ‰ï¼‰\n");
-		printf("\t\t8. æŸ¥çœ‹æ¯”èµ›é¡¹ç›®çš„ç»“æœï¼ˆå‰nåï¼‰\n");
-		printf("\t\t9. å„æ ¡æˆç»©å•\n");
-		printf("\t\t10. å›¢ä½“æ€»åˆ†åˆ†æŠ¥è¡¨\n");
-		printf("\t\t0. é€€å‡º\n");
-		printf("\t\tè¯·é€‰æ‹©: ");
+		printf("\n\n\t\t============== ÔË¶¯»á·ÖÊıÍ³¼Æ ==============\n");
+		printf("\t\t1. Ìí¼ÓÑ§Ğ£\n");
+		printf("\t\t2. É¾³ıÑ§Ğ£\n");
+		printf("\t\t3. ²é¿´²ÎÈüÑ§Ğ£\n");
+		printf("\t\t4. Ìí¼Ó±ÈÈüÏîÄ¿\n");
+		printf("\t\t5. É¾³ı±ÈÈüÏîÄ¿\n");
+		printf("\t\t6. ²é¿´±ÈÈüÏîÄ¿\n");
+		printf("\t\t7. ²é¿´±ÈÈüÏîÄ¿µÄ½á¹û£¨ËùÓĞ£©\n");
+		printf("\t\t8. ²é¿´±ÈÈüÏîÄ¿µÄ½á¹û£¨Ç°nÃû£©\n");
+		printf("\t\t9. ¸÷Ğ£³É¼¨µ¥\n");
+		printf("\t\t10. ÍÅÌå×Ü·Ö·Ö±¨±í\n");
+		printf("\t\t0. ÍË³ö\n");
+		printf("\t\tÇëÑ¡Ôñ: ");
 		scanf("%d", &choice);
 		switch (choice) {
 			case 1:
 				if (schs.length != 0) {
 					showSchools(schs);
 				}
-				printf("\t\tè¯·è¾“å…¥å­¦æ ¡åºå·å’Œå­¦æ ¡åç§°ï¼ˆè¾“å…¥\"0\"ç»“æŸï¼‰\n");
+				printf("\t\tÇëÊäÈëÑ§Ğ£ĞòºÅºÍÑ§Ğ£Ãû³Æ£¨ÊäÈë\"0\"½áÊø£©\n");
 				while (1) {
 					printf("\t\t");
 					scanf("%d", &schoolId);
@@ -40,33 +40,33 @@ int main() {
 				break;
 			case 2:
 				if (schs.length == 0) {
-					printf("\t\tå¦‚æ­¤ç©ºçš„é¡ºåºè¡¨ï¼Œè¿æˆ‘éƒ½åº”ä»˜ä¸è¿‡æ¥ã€‚\n");
+					printf("\t\tÈç´Ë¿ÕµÄË³Ğò±í£¬Á¬ÎÒ¶¼Ó¦¸¶²»¹ıÀ´¡£\n");
 					break;
 				}
 				showSchools(schs);
-				printf("\t\tè¯·é€‰æ‹©ï¼š");
+				printf("\t\tÇëÑ¡Ôñ£º");
 				scanf("%d", &schoolId);
 				removeSchool(&schs, schoolId);
 				break;
 			case 3:
 				if (schs.length == 0) {
-					printf("\t\tå¥½åƒæ²¡æœ‰å­¦æ ¡å‚åŠ æ¯”èµ›ï¼Œå¿«å»è®©æ›´å¤šçš„å­¦æ ¡å‚èµ›å§ã€‚\n");
+					printf("\t\tºÃÏñÃ»ÓĞÑ§Ğ£²Î¼Ó±ÈÈü£¬¿ìÈ¥ÈÃ¸ü¶àµÄÑ§Ğ£²ÎÈü°É¡£\n");
 					break;
 				}
 				showSchools(schs);
 				break;
 			case 4:
 				if (schs.length == 0) {
-					printf("\t\tå¥½åƒæ²¡æœ‰å­¦æ ¡å‚åŠ æ¯”èµ›ï¼Œå¿«å»è®©æ›´å¤šçš„å­¦æ ¡å‚èµ›å§ã€‚\n");
+					printf("\t\tºÃÏñÃ»ÓĞÑ§Ğ£²Î¼Ó±ÈÈü£¬¿ìÈ¥ÈÃ¸ü¶àµÄÑ§Ğ£²ÎÈü°É¡£\n");
 				}
 				addProject(&pros, &schs);
 				break;
 			case 5:
 				if (schs.length == 0) {
-					printf("\t\tå¥½åƒæ²¡æœ‰å­¦æ ¡å‚åŠ æ¯”èµ›ï¼Œå¿«å»è®©æ›´å¤šçš„å­¦æ ¡å‚èµ›å§ã€‚\n");
+					printf("\t\tºÃÏñÃ»ÓĞÑ§Ğ£²Î¼Ó±ÈÈü£¬¿ìÈ¥ÈÃ¸ü¶àµÄÑ§Ğ£²ÎÈü°É¡£\n");
 					break;
 				} else if (pros.length == 0) {
-					printf("\t\tå¥½åƒæ²¡æœ‰æ¯”èµ›é¡¹ç›®ï¼Œå¿«å»å¼€å§‹æ¯”èµ›å§ã€‚\n");
+					printf("\t\tºÃÏñÃ»ÓĞ±ÈÈüÏîÄ¿£¬¿ìÈ¥¿ªÊ¼±ÈÈü°É¡£\n");
 					break;
 				}
 				scanf("%d", &proId);
@@ -74,50 +74,50 @@ int main() {
 				break;
 			case 6:
 				if (pros.length == 0) {
-					printf("\t\tå¥½åƒæ²¡æœ‰æ¯”èµ›é¡¹ç›®ï¼Œå¿«å»å¼€å§‹æ¯”èµ›å§ã€‚\n");
+					printf("\t\tºÃÏñÃ»ÓĞ±ÈÈüÏîÄ¿£¬¿ìÈ¥¿ªÊ¼±ÈÈü°É¡£\n");
 					break;
 				}
 				showProjectsList(pros);
 				break;
 			case 7:
 				if (pros.length == 0) {
-					printf("\t\tå¥½åƒæ²¡æœ‰æ¯”èµ›é¡¹ç›®ï¼Œå¿«å»å¼€å§‹æ¯”èµ›å§ã€‚\n");
+					printf("\t\tºÃÏñÃ»ÓĞ±ÈÈüÏîÄ¿£¬¿ìÈ¥¿ªÊ¼±ÈÈü°É¡£\n");
 					break;
 				}
 				showProjectsList(pros);
-				printf("\t\tè¯·é€‰æ‹©ï¼š");
+				printf("\t\tÇëÑ¡Ôñ£º");
 				scanf("%d", &proId);
 				showProjectResult(pros.data[proId], schs);
 				break;
 			case 8:
 				if (pros.length == 0) {
-					printf("\t\tå¥½åƒæ²¡æœ‰æ¯”èµ›é¡¹ç›®ï¼Œå¿«å»å¼€å§‹æ¯”èµ›å§ã€‚\n");
+					printf("\t\tºÃÏñÃ»ÓĞ±ÈÈüÏîÄ¿£¬¿ìÈ¥¿ªÊ¼±ÈÈü°É¡£\n");
 					break;
 				}
 				showProjectsList(pros);
-				printf("\t\tè¯·é€‰æ‹©ï¼š");
+				printf("\t\tÇëÑ¡Ôñ£º");
 				scanf("%d", &proId);
 				showProjectResult1(pros.data[proId], schs);
 				break;
 			case 9:
 				if (schs.length == 0) {
-					printf("\t\tå¥½åƒæ²¡æœ‰å­¦æ ¡å‚åŠ æ¯”èµ›ï¼Œå¿«å»è®©æ›´å¤šçš„å­¦æ ¡å‚èµ›å§ã€‚\n");
+					printf("\t\tºÃÏñÃ»ÓĞÑ§Ğ£²Î¼Ó±ÈÈü£¬¿ìÈ¥ÈÃ¸ü¶àµÄÑ§Ğ£²ÎÈü°É¡£\n");
 					break;
 				} else if (pros.length == 0) {
-					printf("\t\tå¥½åƒæ²¡æœ‰æ¯”èµ›é¡¹ç›®ï¼Œå¿«å»å¼€å§‹æ¯”èµ›å§ã€‚\n");
+					printf("\t\tºÃÏñÃ»ÓĞ±ÈÈüÏîÄ¿£¬¿ìÈ¥¿ªÊ¼±ÈÈü°É¡£\n");
 					break;
 				}
 				showSchools(schs);
-				printf("\t\tè¯·é€‰æ‹©ï¼š");
+				printf("\t\tÇëÑ¡Ôñ£º");
 				scanf("%d", &schoolId);
-				showSchoolResult(schs, schoolId);
+				showSchoolResult(schs, pros, schoolId);
 				break;
 			case 10:
 				if (schs.length == 0) {
-					printf("\t\tå¥½åƒæ²¡æœ‰å­¦æ ¡å‚åŠ æ¯”èµ›ï¼Œå¿«å»è®©æ›´å¤šçš„å­¦æ ¡å‚èµ›å§ã€‚\n");
+					printf("\t\tºÃÏñÃ»ÓĞÑ§Ğ£²Î¼Ó±ÈÈü£¬¿ìÈ¥ÈÃ¸ü¶àµÄÑ§Ğ£²ÎÈü°É¡£\n");
 					break;
 				} else if (pros.length == 0) {
-					printf("\t\tå¥½åƒæ²¡æœ‰æ¯”èµ›é¡¹ç›®ï¼Œå¿«å»å¼€å§‹æ¯”èµ›å§ã€‚\n");
+					printf("\t\tºÃÏñÃ»ÓĞ±ÈÈüÏîÄ¿£¬¿ìÈ¥¿ªÊ¼±ÈÈü°É¡£\n");
 					break;
 				}
 				count(schs);

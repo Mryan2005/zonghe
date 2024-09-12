@@ -5,7 +5,7 @@
 
 void removeProject(projects *pros, int proId) {
 	if(pros->data[proId].projectId == 0) {
-		printf("\t\tè¯¥idä¸å­˜åœ¨\n");
+		printf("\t\t¸Ãid²»´æÔÚ\n");
 		return;
 	}
 	for(stdu **p = pros->data[proId].data; p < pros->data[proId].data+pros->data[proId].length; p++) {
@@ -40,51 +40,51 @@ void sort(stdu **data, int length) {
 void addProject(projects *pros, schools *schs) {
 	int length, proId, getPreN, proType;
 	char isY, projectName[256];
-	printf("\t\tå‚èµ›äººæ•°: ");
+	printf("\t\t²ÎÈüÈËÊı: ");
 	scanf("%d", &length);
-	printf("\t\té¡¹ç›®çš„ç¼–å· (ç”·ç”Ÿï¼š1~30ï¼Œå¥³ç”Ÿ31~50): ");
+	printf("\t\tÏîÄ¿µÄ±àºÅ (ÄĞÉú£º1~30£¬Å®Éú31~50): ");
 	scanf("%d", &proId);
 	if(pros->data[proId].projectId != 0) {
-		printf("\t\té¡¹ç›®idå·²è¢«å ç”¨ï¼Œè¯·ä¿®æ”¹é¡¹ç›®idã€‚\n");
+		printf("\t\tÏîÄ¿idÒÑ±»Õ¼ÓÃ£¬ÇëĞŞ¸ÄÏîÄ¿id¡£\n");
 		while(1) {
-			printf("\t\tè¯·ä¿®æ”¹é¡¹ç›®id: ");
+			printf("\t\tÇëĞŞ¸ÄÏîÄ¿id: ");
 			scanf("%d", &proId);
 			if(pros->data[proId].projectId == 0) break;
 		}
 	} else if(proType == 0 && proId >= girlProjectP) {
-		printf("\t\té¡¹ç›®ç±»å‹å‡ºé”™ï¼Œè¿™æ˜¯å¦æ˜¯å¥³ç”Ÿé¡¹ç›® (y or n)ï¼š\n");
+		printf("\t\tÏîÄ¿ÀàĞÍ³ö´í£¬ÕâÊÇ·ñÊÇÅ®ÉúÏîÄ¿ (y or n)£º\n\t\t");
 		scanf("%c", &isY);
 		if(isY == 'y') {
 			proType = 1;
 		} else {
 			while(1) {
-				printf("\t\tè¯·ä¿®æ”¹é¡¹ç›®id: ");
+				printf("\t\tÇëĞŞ¸ÄÏîÄ¿id: ");
 				scanf("%d", &proId);
 				if(proId < girlProjectP) break;
 			}
 		}
 	} else if(proType == 1 && proId < girlProjectP) {
-		printf("\t\té¡¹ç›®ç±»å‹å‡ºé”™ï¼Œè¿™æ˜¯å¦æ˜¯ç”·ç”Ÿé¡¹ç›® (y or n)ï¼š\n");
+		printf("\t\tÏîÄ¿ÀàĞÍ³ö´í£¬ÕâÊÇ·ñÊÇÄĞÉúÏîÄ¿ (y or n)£º\n\t\t");
 		scanf("%c", &isY);
 		if(isY == 'y') {
 			proType = 0;
 		} else {
 			while(1) {
-				printf("\t\tè¯·ä¿®æ”¹é¡¹ç›®id: ");
+				printf("\t\tÇëĞŞ¸ÄÏîÄ¿id: ");
 				scanf("%d", &proId);
 				if(proId < girlProjectP) break;
 			}
 		}
 	}
-	printf("\t\té¡¹ç›®è¦å–çš„å‰nåï¼ˆnä¸º0æ—¶ï¼Œå°†ç”±ç³»ç»Ÿè‡ªåŠ¨å®‰æ’ï¼‰: ");
+	printf("\t\tÏîÄ¿ÒªÈ¡µÄÇ°nÃû£¨nÎª0Ê±£¬½«ÓÉÏµÍ³×Ô¶¯°²ÅÅ£©: ");
 	scanf("%d", &getPreN);
 	if(getPreN == 0) {
 		if(length % 2 == 0) getPreN = 3;
 		else getPreN = 5;
 	}
-	printf("\t\té¡¹ç›®çš„ç±»å‹ï¼ˆ0 or 1ï¼‰[ 0: ç”·ç”Ÿ, 1: å¥³ç”Ÿ ]: ");
+	printf("\t\tÏîÄ¿µÄÀàĞÍ£¨0 or 1£©[ 0: ÄĞÉú, 1: Å®Éú ]: ");
 	scanf("%d", &proType);
-	printf("\t\tæ¯”èµ›é¡¹ç›®åç§°: ");
+	printf("\t\t±ÈÈüÏîÄ¿Ãû³Æ: ");
 	fflush(stdin);
 	gets(projectName);
     pros->data[proId].projectId = proId;
@@ -94,12 +94,12 @@ void addProject(projects *pros, schools *schs) {
 	int i = 1;
     for(stdu **p = pros->data[proId].data; p < pros->data[proId].data+pros->data[proId].length; ) {
 		*p = (stdu*)malloc(sizeof(stdu));
-		printf("\t\tè¯·è¾“å…¥ï¼ˆå§“å å­¦æ ¡ç¼–å· åˆ†æ•°ï¼‰\n\t\t");
+		printf("\t\tÇëÊäÈë£¨ĞÕÃû Ñ§Ğ£±àºÅ ·ÖÊı£©\n\t\t");
 		scanf("%s %d %d", (*p)->name, &(*p)->schoolId, &(*p)->score);
 		(*p)->position = i;
 		(*p)->projectid = proId;
 		if(schs->data[(*p)->schoolId].schoolId == 0) {
-			printf("\t\t%sæ‰€å±å­¦æ ¡ä¸å­˜åœ¨ï¼Œè¯¥å­¦ç”Ÿä¿¡æ¯æ— æ³•å½•å…¥ï¼Œæ‰€ä»¥è¢«æ’é™¤æ‰ã€‚\n", (*p)->name);
+			printf("\t\t%sËùÊôÑ§Ğ£²»´æÔÚ£¬¸ÃÑ§ÉúĞÅÏ¢ÎŞ·¨Â¼Èë£¬ËùÒÔ±»ÅÅ³ıµô¡£\n", (*p)->name);
 			pros->data[proId].length--;
 		} else {
 			++p;
@@ -112,8 +112,8 @@ void addProject(projects *pros, schools *schs) {
 }
 
 void showProjectsList(projects pros) {
-	printf("\t\t\tå½“å‰å·²è¿›è¡Œçš„æ¯”èµ›é¡¹ç›®\n\t\t===================================\n");
-	printf("\t\tid\tæ¯”èµ›åç§°\tå–å‰nå\n");
+	printf("\t\t\tµ±Ç°ÒÑ½øĞĞµÄ±ÈÈüÏîÄ¿\n\t\t===================================\n");
+	printf("\t\tid\t±ÈÈüÃû³Æ\tÈ¡Ç°nÃû\n");
 	for(int i = 1; i < maxProject; i++) {
 		if(pros.data[i].projectId != 0) {
 			printf("\t\t%d\t%s\t%d\n", pros.data[i].projectId, pros.data[i].projectName, pros.data[i].getPreN);
@@ -122,16 +122,16 @@ void showProjectsList(projects pros) {
 }
 
 void showProjectResult(project pro, schools schs) {
-	printf("\t\t\tæ¯”èµ›ç»“æœï¼ˆå…¨éƒ¨ï¼‰\n\t\t===================================\n");
-	printf("\t\tæ’å\tå§“å\tæˆç»©\tæ‰€å±å­¦æ ¡\n");
+	printf("\t\t\t±ÈÈü½á¹û£¨È«²¿£©\n\t\t===================================\n");
+	printf("\t\tÅÅÃû\tĞÕÃû\t³É¼¨\tËùÊôÑ§Ğ£\n");
 	for(int i = 0; i < pro.length; i++) {
 		printf("\t\t%d\t%s\t%d\t%s\n", i+1, pro.data[i]->name, pro.data[i]->score, schs.data[pro.data[i]->schoolId].schoolName);
 	}
 }
 
 void showProjectResult1(project pro, schools schs) {
-	printf("\t\t\tæ¯”èµ›ç»“æœï¼ˆå‰nåï¼‰\n\t\t===================================\n");
-	printf("\t\tæ’å\tå§“å\tæˆç»©\tæ‰€å±å­¦æ ¡\n");
+	printf("\t\t\t±ÈÈü½á¹û£¨Ç°nÃû£©\n\t\t===================================\n");
+	printf("\t\tÅÅÃû\tĞÕÃû\t³É¼¨\tËùÊôÑ§Ğ£\n");
 	for(int i = 0; i < pro.length && i < pro.getPreN; i++) {
 		printf("\t\t%d\t%s\t%d\t%s\n", i+1, pro.data[i]->name, pro.data[i]->score, schs.data[pro.data[i]->schoolId].schoolName);
 	}
@@ -157,7 +157,7 @@ projects initProjectsSqList() {
 
 void addSchool(schools *schs, int schoolId, char *schoolName) {
 	if(schs->data[schoolId].schoolId != 0) {
-		printf("\t\tè¯¥å­¦æ ¡åºå·å·²è¢«å ç”¨\n");
+		printf("\t\t¸ÃÑ§Ğ£ĞòºÅÒÑ±»Õ¼ÓÃ\n");
 		return;
 	}
 	schs->data[schoolId].schoolId = schoolId;
@@ -167,13 +167,24 @@ void addSchool(schools *schs, int schoolId, char *schoolName) {
 }
 
 void removeSchool(schools *schs, int schoolId) {
-	if(schoolId < maxSchool && schoolId == 0) {
-		printf("\t\tè¶…è¿‡èŒƒå›´ï¼\n");
+	char isY;
+	if(schoolId < maxSchool) {
+		printf("\t\t³¬¹ı·¶Î§£¡\n");
+		return;
+	} else if(schoolId == 0) {
+		printf("\t\tÒÑÍË³ö£¡\n");
+		return;
+	} else if(schs->data[schoolId].schoolId == 0) {
+		printf("\t\t¸ÃÑ§Ğ£²»´æÔÚ£¡\n");
 		return;
 	}
-	if(schs->data[schoolId].schoolId == 0) {
-		printf("\t\tè¯¥å­¦æ ¡ä¸å­˜åœ¨ï¼\n");
-		return;
+	if(schs->data[schoolId].length > 0) {
+		printf("\t\tµ±Ç°ÏîÄ¿´æÔÚ±ÈÈü¼ÇÂ¼£¬ÄãÕæµÄÒªÉ¾³ıËüÂğ£¿£¨y or n£©£º");
+		scanf("%c", &isY);
+		if(isY == 'n') {
+			printf("\t\tÍË³öÉ¾³ı½çÃæ\n");
+			return;
+		}
 	}
 	schs->data[schoolId].schoolId = 0;
 	--(schs->length);
@@ -181,24 +192,24 @@ void removeSchool(schools *schs, int schoolId) {
 
 void showSchools(schools schs) {
 	printf("\n");
-	printf("\t\t\tå½“å‰å‚èµ›å­¦æ ¡\n\t\t===================================\n");
+	printf("\t\t\tµ±Ç°²ÎÈüÑ§Ğ£\n\t\t===================================\n");
 	for(int i = 1; i < maxSchool; i++) {
 		if(schs.data[i].schoolId != 0) printf("\t\t %d %s \n", schs.data[i].schoolId, schs.data[i].schoolName);
 	}
 	printf("\n");
 }
 
-void showSchoolResult(schools schs, int schoolId) {
-	printf("\t\t\tæ¯”èµ›ç»“æœ\n\t\t===================================\n");
-	printf("\t\tå§“å\té¡¹ç›®id\tæ’å\tæˆç»©\n");
+void showSchoolResult(schools schs, projects pros, int schoolId) {
+	printf("\t\t\t±ÈÈü½á¹û\n\t\t===================================\n");
+	printf("\t\tĞÕÃû\tÏîÄ¿id\tÏîÄ¿Ãû³Æ\tÅÅÃû\t³É¼¨\n");
 	for(stdu **p = schs.data[schoolId].data; p < schs.data[schoolId].data + schs.data[schoolId].length; p++) {
-		printf("\t\t%s\t%d\t%d\t%d\n", (*p)->name, (*p)->projectid, (*p)->position, (*p)->score);
+		printf("\t\t%s\t%d\t%s\t%d\t%d\n", (*p)->name, (*p)->projectid, pros.data[(*p)->projectid].projectName, (*p)->position, (*p)->score);
 	}
 }
 
 void count(schools schs) {
-	printf("\t\t\tå›¢ä½“ç»Ÿè®¡\n\t\t===================================\n");
-	printf("\t\tå­¦æ ¡å\tç”·å­å›¢ä½“\tå¥³å­å›¢ä½“\tå›¢ä½“æ€»åˆ†\n");
+	printf("\t\t\tÍÅÌåÍ³¼Æ\n\t\t===================================\n");
+	printf("\t\tÑ§Ğ£Ãû\tÄĞ×ÓÍÅÌå\tÅ®×ÓÍÅÌå\tÍÅÌå×Ü·Ö\n");
 	for(int i = 1; i < maxSchool; i++) {
 		if(schs.data[i].schoolId == 0) continue;
 		schs.data[i].boysScoreSum = schs.data[i].girlsScoreSum = 0;
